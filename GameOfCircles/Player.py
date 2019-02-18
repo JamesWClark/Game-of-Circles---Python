@@ -1,6 +1,8 @@
-from SpriteManager import sprites
-from Bullet import Bullet
+import SpriteManager
+
 from Sprite import Sprite
+from Bullet import Bullet
+
 
 class Player(Sprite):
     
@@ -25,12 +27,12 @@ class Player(Sprite):
         self.y = constrain(self.y, self.diameter / 2, height - self.diameter / 2)
         
     def fire(self):
-        print("FIRE")
+        global _SM
+        SpriteManager.spawn(Bullet(self.x, self.y, PVector(0, -10), self.team))
         
     def keyDown(self):
         if key == 'f' or key == 'F':
-            sprites.append(Bullet(self.x, self.y, PVector(0, -10), self.team))
-    
+            self.fire()
         if keyCode == LEFT:
             self.left = True
         if keyCode == RIGHT:
