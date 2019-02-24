@@ -8,6 +8,10 @@ def setPlayer(playerInstance):
     global player
     player = playerInstance
     spawn(player)
+    
+def getPlayer():
+    global player
+    return player
         
 def destroy(target):
     destroyed.append(target)

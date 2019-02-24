@@ -17,5 +17,6 @@ class Bullet(Sprite):
         or self.x > width + self.diameter
         or self.y < 0 - self.diameter
         or self.y > height + self.diameter):
-            self.handleCollision() # destroys self bc off screen
+            pass
+            # self.handleCollision() # destroys self bc off screen
         

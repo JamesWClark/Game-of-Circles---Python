@@ -7,6 +7,7 @@ from Bullet import Bullet
 from Enemy import Enemy
 from Player import Player
 from Raindrop import Raindrop
+from RaindropShooter import RaindropShooter
 from JiggleBot import JiggleBot
 from ScreenSaverBot import ScreenSaverBot
 
@@ -27,6 +28,7 @@ def setup():
     SpriteManager.spawn(Raindrop(100, 100, enemyTeam))
     SpriteManager.spawn(JiggleBot(width/2, height/2, enemyTeam))
     SpriteManager.spawn(ScreenSaverBot(0, 0, enemyTeam))
+    SpriteManager.spawn(RaindropShooter(200, 50, enemyTeam))
                            
 def draw():
     background(255)    

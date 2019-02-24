@@ -3,7 +3,6 @@ import SpriteManager
 from Sprite import Sprite
 from Bullet import Bullet
 
-
 class Player(Sprite):
     
     left = False
@@ -27,7 +26,6 @@ class Player(Sprite):
         self.y = constrain(self.y, self.diameter / 2, height - self.diameter / 2)
         
     def fire(self):
-        global _SM
         SpriteManager.spawn(Bullet(self.x, self.y, PVector(0, -10), self.team))
         
     def keyDown(self):
