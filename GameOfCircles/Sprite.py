@@ -1,6 +1,6 @@
 import SpriteManager
 
-class Sprite:
+class Sprite(object):
     team = 2
     diameter = 50
     c = color(255)

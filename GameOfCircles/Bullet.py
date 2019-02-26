@@ -13,4 +13,10 @@ class Bullet(Sprite):
     def move(self):
         self.x += self.vector.x
         self.y += self.vector.y
+        if (self.x < 0 - self.diameter
+        or self.x > width + self.diameter
+        or self.y < 0 - self.diameter
+        or self.y > height + self.diameter):
+            pass
+            # self.handleCollision() # destroys self bc off screen
         
