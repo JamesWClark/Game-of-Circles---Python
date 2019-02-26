@@ -21,13 +21,15 @@ def setup():
     playerTeam = 1
     enemyTeam = 2
     player = Player(width / 2, height - 100, playerTeam);
-
-    SpriteManager.setPlayer(player)    
+    SpriteManager.setPlayer(player)
+    
+    '''
     SpriteManager.spawn(Enemy(50, 50, enemyTeam))
     SpriteManager.spawn(Enemy(150, 150, enemyTeam))
     SpriteManager.spawn(Raindrop(100, 100, enemyTeam))
     SpriteManager.spawn(JiggleBot(width/2, height/2, enemyTeam))
     SpriteManager.spawn(ScreenSaverBot(0, 0, enemyTeam))
+    '''
     SpriteManager.spawn(RaindropShooter(200, 50, enemyTeam))
                            
 def draw():

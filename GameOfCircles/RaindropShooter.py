@@ -10,6 +10,8 @@ class RaindropShooter(Raindrop):
     speed = 2
     diameter = 50
     c = color(255, 255, 0)
+    mark = 0
+    wait = 700
 
     def move(self):
         super(RaindropShooter, self).move()
@@ -17,13 +19,14 @@ class RaindropShooter(Raindrop):
         self.fire(vector)
         
     def aim(self, target):
-        xComponent = self.x - target.x
-        yComponent = self.y - target.y
-        distance = math.sqrt(math.pow(xComponent, 2) + math.pow(yComponent, 2))
-        xUnit = xComponent / distance
-        yUnit = yComponent / distance    
-        return PVector(xUnit, yUnit)
+        distance = dist(target.x, target.y, self.x, self.y)
+        xComponent = target.x - self.x
+        yComponent = target.y - self.y
+        f = 7
+        return PVector(xComponent / distance * f, yComponent / distance * f)
         
     def fire(self, vector):
-        SpriteManager.spawn(Bullet(self.x, self.y, vector, self.team))
+        if millis() - self.mark > self.wait:
+            self.mark = millis()
+            SpriteManager.spawn(Bullet(self.x, self.y, vector, self.team))
         

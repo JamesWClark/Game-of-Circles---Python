@@ -25,8 +25,21 @@ class Player(Sprite):
         self.x = constrain(self.x, self.diameter / 2, width - self.diameter / 2)
         self.y = constrain(self.y, self.diameter / 2, height - self.diameter / 2)
         
-    def fire(self):
-        SpriteManager.spawn(Bullet(self.x, self.y, PVector(0, -10), self.team))
+    def aim(self):
+        distance = dist(mouseX, mouseY, self.x, self.y)
+        xComponent = mouseX - self.x
+        yComponent = mouseY - self.y
+        f = 7
+        return PVector(xComponent / distance * f, yComponent / distance * f)
+        
+    def fire(self, vector = None):
+        if vector is None:
+            SpriteManager.spawn(Bullet(self.x, self.y, PVector(0, -10), self.team))
+        else:
+            SpriteManager.spawn(Bullet(self.x, self.y, vector, self.team))
+            
+    def handleCollision(self):
+        pass
         
     def keyDown(self):
         if key == 'f' or key == 'F':
