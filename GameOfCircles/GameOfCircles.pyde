@@ -15,23 +15,13 @@ import SpriteManager
 
 def setup():
     print "Built with Processing Python version " + platform.python_version()
-    
     size(500, 500)
-    
-    playerTeam = 1
-    enemyTeam = 2
-    player = Player(width / 2, height - 100, playerTeam);
-    SpriteManager.setPlayer(player)
-    
-    '''
-    SpriteManager.spawn(Enemy(50, 50, enemyTeam))
-    SpriteManager.spawn(Enemy(150, 150, enemyTeam))
-    SpriteManager.spawn(Raindrop(100, 100, enemyTeam))
-    SpriteManager.spawn(JiggleBot(width/2, height/2, enemyTeam))
-    SpriteManager.spawn(ScreenSaverBot(0, 0, enemyTeam))
-    '''
-    SpriteManager.spawn(RaindropShooter(200, 50, enemyTeam))
-                           
+    player = Player(width / 2, height - 100, 1);
+    SpriteManager.setPlayer(player)    
+    SpriteManager.spawn(JiggleBot(200, 50, 2))
+    SpriteManager.spawn(Enemy(100, 100, 2))
+    SpriteManager.spawn(RaindropShooter(200, 200, 2))
+        
 def draw():
     background(255)    
     SpriteManager.animate()

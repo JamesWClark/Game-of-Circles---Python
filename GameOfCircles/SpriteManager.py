@@ -23,7 +23,7 @@ def animate():
     for sprite in sprites:
         sprite.animate()
     checkCollisions()
-    bringOutTheDead()
+    bringOutYerDead()
         
 def checkCollisions():
     for i in range(0, len(sprites)):
@@ -34,7 +34,8 @@ def checkCollisions():
                 sprites[i].handleCollision()
                 sprites[j].handleCollision()
                 
-def bringOutTheDead():
+def bringOutYerDead():
     for sprite in destroyed:
-        sprites.remove(sprite)
+        if sprite in sprites:
+            sprites.remove(sprite)
         destroyed.remove(sprite)

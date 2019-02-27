@@ -1,5 +1,4 @@
 import math
-
 import SpriteManager
 
 from Sprite import Sprite
@@ -23,10 +22,11 @@ class RaindropShooter(Raindrop):
         xComponent = target.x - self.x
         yComponent = target.y - self.y
         f = 7
+        if distance == 0:
+            distance = 0.01
         return PVector(xComponent / distance * f, yComponent / distance * f)
-        
+            
     def fire(self, vector):
         if millis() - self.mark > self.wait:
-            self.mark = millis()
             SpriteManager.spawn(Bullet(self.x, self.y, vector, self.team))
-        
+            self.mark = millis()

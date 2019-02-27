@@ -19,4 +19,4 @@ class Bullet(Sprite):
         or self.x > width + self.diameter
         or self.y < 0 - self.diameter
         or self.y > height + self.diameter):
-            pass
+            SpriteManager.destroy(self)
