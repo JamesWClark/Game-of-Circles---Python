@@ -1,7 +1,3 @@
-#TODO: https://stackoverflow.com/questions/13034496/using-global-variables-between-files
-
-import platform
-
 from Player import Player
 from Bullet import Bullet
 from Enemy import Enemy
@@ -11,6 +7,7 @@ from RaindropShooter import RaindropShooter
 from JiggleBot import JiggleBot
 from ScreenSaverBot import ScreenSaverBot
 
+import platform
 import SpriteManager
 
 def setup():
