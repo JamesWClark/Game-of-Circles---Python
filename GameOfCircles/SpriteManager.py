@@ -1,3 +1,5 @@
+import math
+
 sprites = []
 destroyed = []
     
@@ -30,9 +32,14 @@ def checkCollisions():
         for j in range(i + 1, len(sprites)):
             a = sprites[i]
             b = sprites[j]
-            if a.team != b.team and a.isColliding(b):
+            if a.team != b.team and collision(a, b):
                 sprites[i].handleCollision()
                 sprites[j].handleCollision()
+                
+def collision(a, b):
+    r1 = a.diameter / 2.0
+    r2 = b.diameter / 2.0
+    return r1 + r2 > math.sqrt(math.pow(a.x - b.x, 2) + math.pow(a.y - b.y, 2))
                 
 def bringOutYerDead():
     for sprite in destroyed:

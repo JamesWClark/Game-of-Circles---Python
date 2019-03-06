@@ -16,7 +16,7 @@ import SpriteManager
 def setup():
     print "Built with Processing Python version " + platform.python_version()
     size(500, 500)
-    player = Player(width / 2, height - 100, 1);
+    player = Player(width / 2, height - 100, 1)
     SpriteManager.setPlayer(player)    
     SpriteManager.spawn(JiggleBot(200, 50, 2))
     SpriteManager.spawn(Enemy(100, 100, 2))
@@ -31,3 +31,4 @@ def keyPressed():
         
 def keyReleased():
     SpriteManager.player.keyUp()
+    
