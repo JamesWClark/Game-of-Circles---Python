@@ -43,6 +43,6 @@ def collision(a, b):
                 
 def bringOutYerDead():
     for sprite in destroyed:
-        if sprite in sprites:
+        if sprite in sprites: # figure out: removing this check causes like 90000 sprites to eventually add to destroyed list and multiple attempts to remove the same sprite crashes the program
             sprites.remove(sprite)
         destroyed.remove(sprite)
