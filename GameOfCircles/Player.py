@@ -38,6 +38,7 @@ class Player(Sprite):
         else:
             SpriteManager.spawn(Bullet(self.x, self.y, vector, self.team))
             
+    # player overrides Sprite.handleCollision, thus making himself invincible by passing through
     def handleCollision(self):
         pass
         
