@@ -3,7 +3,6 @@ from Sprite import Sprite
 class ScreenSaverBot(Sprite):
     xspeed = 4
     yspeed = 2
-    diameter = 50
     c = color(0, 255, 255)
 
     def move(self):

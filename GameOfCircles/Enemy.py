@@ -1,12 +1,13 @@
 import SpriteManager # module, not class
+
+from Armored import Armored
 from Sprite import Sprite
 from Bullet import Bullet
 from Shooter import Shooter
 
-class Enemy(Shooter, Sprite):
+class Enemy(Armored, Shooter, Sprite):
     
     speed = 8
-    diameter = 50
     c = color(0,0,255)
         
     def move(self):

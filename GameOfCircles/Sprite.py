@@ -29,5 +29,10 @@ class Sprite(object):
         r2 = other.diameter / 2.0
         return r1 + r2 > dist(self.x, self.y, other.x, other.y)
     
-    def handleCollision(self):
-        SpriteManager.destroy(self)
+    # todo: https://stackoverflow.com/a/5268474/1161948
+    def handleCollision(self, other):
+        debuff = getattr(other, "debuff", None)
+        if callable(debuff):
+            debuff(self)
+        else:
+            SpriteManager.destroy(self)

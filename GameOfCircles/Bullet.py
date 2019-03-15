@@ -3,8 +3,8 @@ import SpriteManager
 from Sprite import Sprite
 
 class Bullet(Sprite):
-    
-    diameter = 10
+    damage = 1
+    diameter = 5
     c = color(0)
     
     # constructor

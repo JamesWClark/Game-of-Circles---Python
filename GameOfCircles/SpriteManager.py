@@ -2,7 +2,7 @@ import math
 
 sprites = []
 destroyed = []
-    
+
 playerTeam = 1
 enemyTeam = 2
 
@@ -21,20 +21,24 @@ def destroy(target):
 def spawn(obj):
     sprites.append(obj)
         
-def animate():
-    for sprite in sprites:
-        sprite.animate()
+def manage():
+    updatePositions()
     checkCollisions()
     bringOutYerDead()
         
+def updatePositions():
+    for i in range(len(sprites)-1, -1, -1):
+        sprites[i].animate()
+
+
 def checkCollisions():
     for i in range(0, len(sprites)):
         for j in range(i + 1, len(sprites)):
             a = sprites[i]
             b = sprites[j]
             if a.team != b.team and collision(a, b):
-                sprites[i].handleCollision()
-                sprites[j].handleCollision()
+                a.handleCollision(b)
+                b.handleCollision(a)
                 
 def collision(a, b):
     r1 = a.diameter / 2.0

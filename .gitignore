@@ -2,4 +2,4 @@
 desktop.ini
 application.*
 *.class
-
+*.idea/*

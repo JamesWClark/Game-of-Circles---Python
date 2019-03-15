@@ -7,7 +7,6 @@ from Bullet import Bullet
 
 class RaindropShooter(Raindrop, Shooter):
     speed = 2
-    diameter = 50
     c = color(255, 255, 0)
     mark = 0
     wait = 700

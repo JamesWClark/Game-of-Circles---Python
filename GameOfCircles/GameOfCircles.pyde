@@ -7,6 +7,7 @@ from RaindropShooter import RaindropShooter
 from JiggleBot import JiggleBot
 from ScreenSaverBot import ScreenSaverBot
 from OddBall import OddBall
+from Armored import Armored
 
 import platform
 import SpriteManager
@@ -25,8 +26,8 @@ def setup():
     
         
 def draw():
-    background(255)    
-    SpriteManager.animate()
+    background(204)    
+    SpriteManager.manage()
     
 def keyPressed():
     SpriteManager.player.keyDown()    
