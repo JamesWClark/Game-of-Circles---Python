@@ -1,0 +1,3 @@
+class GreenSlime(StatusEffect):
+    
+    

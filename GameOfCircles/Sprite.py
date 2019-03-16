@@ -5,6 +5,8 @@ class Sprite(object):
     diameter = 50
     c = color(255)
     
+    effects = {}
+    
     def __init__(self, x, y, team):
         self.x = x
         self.y = y
