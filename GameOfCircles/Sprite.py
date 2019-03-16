@@ -4,8 +4,9 @@ class Sprite(object):
     team = 2
     diameter = 50
     c = color(255)
+    velocity = PVector(0, 0)
     
-    effects = {}
+    effects = []
     
     def __init__(self, x, y, team):
         self.x = x
@@ -23,6 +24,8 @@ class Sprite(object):
         ellipse(self.x, self.y, self.diameter, self.diameter)
         
     def animate(self):
+        for effect in self.effects:
+            effect.evaluate()
         self.move()
         self.display()
         
@@ -33,8 +36,4 @@ class Sprite(object):
     
     # todo: https://stackoverflow.com/a/5268474/1161948
     def handleCollision(self, other):
-        debuff = getattr(other, "debuff", None)
-        if callable(debuff):
-            debuff(self)
-        else:
-            SpriteManager.destroy(self)
+        SpriteManager.destroy(self)
