@@ -8,13 +8,13 @@ class Bullet(Sprite):
     c = color(0)
     
     # constructor
-    def __init__(self, x, y, vector, team):
+    def __init__(self, x, y, velocity, team):
         Sprite.__init__(self, x, y, team)
-        self.vector = vector
+        self.velocity = velocity
         
     def move(self):
-        self.x += self.vector.x
-        self.y += self.vector.y
+        self.x += self.velocity.x
+        self.y += self.velocity.y
         
         if (self.x < 0 - self.diameter
         or self.x > width + self.diameter

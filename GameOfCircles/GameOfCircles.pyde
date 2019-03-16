@@ -21,8 +21,8 @@ def setup():
     SpriteManager.spawn(Enemy(100, 100, 2))
     SpriteManager.spawn(RaindropShooter(200, 200, 2))
     SpriteManager.spawn(OddBall(100, 100, 50, 2))
-    SpriteManager.spawn(OddBall(200, 100, 40, 2))
-    SpriteManager.spawn(OddBall(100, 200, 20, 2))
+    SpriteManager.spawn(ScreenSaverBot(200, 200, 2))
+    SpriteManager.spawn(Raindrop(300, 100, 2))
     
         
 def draw():

@@ -2,10 +2,10 @@ import SpriteManager
 from Pea import Pea
 
 class PeaShooter:
-    wait = 2400
-    mark = 0
     cooldown = True
     magnitude = 2
+    mark = 0
+    wait = 2400
 
     def __init__(self, handler):
         self.handler = handler

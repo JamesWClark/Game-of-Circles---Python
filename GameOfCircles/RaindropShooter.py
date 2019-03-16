@@ -6,7 +6,7 @@ from Raindrop import Raindrop
 from Bullet import Bullet
 
 class RaindropShooter(Raindrop, Shooter):
-    speed = 2
+    velocity = PVector(0,2)
     c = color(255, 255, 0)
     mark = 0
     wait = 700
