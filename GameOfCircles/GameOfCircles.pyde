@@ -8,6 +8,7 @@ from JiggleBot import JiggleBot
 from ScreenSaverBot import ScreenSaverBot
 from OddBall import OddBall
 from Armored import Armored
+from GreenZone import GreenZone
 
 import platform
 import SpriteManager
@@ -19,12 +20,10 @@ def setup():
 
     SpriteManager.setPlayer(Player(width / 2, height - 100, 1))    
     SpriteManager.spawn(JiggleBot(200, 50, 2))
-    SpriteManager.spawn(Enemy(100, 100, 2))
-    SpriteManager.spawn(RaindropShooter(200, 200, 2))
     SpriteManager.spawn(OddBall(100, 100, 50, 2))
     SpriteManager.spawn(ScreenSaverBot(200, 200, 2))
     SpriteManager.spawn(Raindrop(300, 100, 2))
-    
+    SpriteManager.spawn(GreenZone(400, 400, 2))
         
 def draw():
     background(204)    

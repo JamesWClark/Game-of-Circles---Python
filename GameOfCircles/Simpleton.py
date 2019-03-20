@@ -2,7 +2,7 @@ import SpriteManager
 from Bullet import Bullet
 
 class Simpleton:
-    wait = 200
+    wait = 120
     mark = 0
     cooldown = True
     magnitude = 12

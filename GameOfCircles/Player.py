@@ -18,6 +18,7 @@ class Player(Armored, Sprite):
     velocity = PVector(5,5)
     c = color(255,0,0)
     armory = Armory()
+    damage = 15
     
     def handleCollision(self, other):
         pass

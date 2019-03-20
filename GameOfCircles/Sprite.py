@@ -22,10 +22,9 @@ class Sprite(object):
         pass
     
     def display(self):
+        noStroke()
         fill(self.c)
         ellipse(self.x, self.y, self.diameter, self.diameter)
-        fill(0)
-        text(self.hp, self.x, self.y - 10)
         
     def animate(self):
         for effect in self.effects:

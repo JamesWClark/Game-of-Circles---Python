@@ -19,6 +19,7 @@ class GreenSlime(StatusEffect):
         self.host.effects.remove(self)
         
     def evaluate(self):
-        self.apply()
-        if(millis() - self.mark > self.wait):
+        if(millis() - self.mark < self.wait):
+            self.apply()
+        else:
             self.clear()

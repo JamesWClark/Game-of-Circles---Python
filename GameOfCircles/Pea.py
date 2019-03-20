@@ -2,12 +2,18 @@ import SpriteManager
 
 from Bullet import Bullet
 from GreenSlime import GreenSlime
+from GreenZone import GreenZone
 
 class Pea(Bullet):
-    hp = 0
-    diameter = 25
+    diameter = 15
     c = color(0,255,0)
     damage = 0
     
+    '''
     def effect(self, other):
         other.effects.append(GreenSlime(other))
+       '''
+        
+    def handleCollision(self, other):
+        SpriteManager.spawn(GreenZone(self.x, self.y, self.team))
+        SpriteManager.destroy(self)

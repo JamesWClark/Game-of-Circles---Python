@@ -3,9 +3,9 @@ from Pea import Pea
 
 class PeaShooter:
     cooldown = True
-    magnitude = 2
+    magnitude = 6
     mark = 0
-    wait = 2400
+    wait = 400
 
     def __init__(self, handler):
         self.handler = handler
