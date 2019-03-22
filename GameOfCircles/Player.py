@@ -39,15 +39,15 @@ class Player(Armored, Sprite):
     
     def move(self):
         if self.left:
-            self.x -= self.velocity.x
+            self.pos.x -= self.velocity.x
         if self.right:
-            self.x += self.velocity.x
+            self.pos.x += self.velocity.x
         if self.up:
-            self.y -= self.velocity.y
+            self.pos.y -= self.velocity.y
         if self.down:
-            self.y += self.velocity.y
-        self.x = constrain(self.x, self.diameter / 2, width - self.diameter / 2)
-        self.y = constrain(self.y, self.diameter / 2, height - self.diameter / 2)
+            self.pos.y += self.velocity.y
+        self.pos.x = constrain(self.pos.x, self.diameter / 2, width - self.diameter / 2)
+        self.pos.y = constrain(self.pos.y, self.diameter / 2, height - self.diameter / 2)
         self.fire()
         
     def aim(self):

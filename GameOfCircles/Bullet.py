@@ -13,11 +13,10 @@ class Bullet(Sprite):
         self.velocity = velocity
         
     def move(self):
-        self.x += self.velocity.x
-        self.y += self.velocity.y
+        self.pos.add(self.velocity)
         
-        if (self.x < 0 - self.diameter
-        or self.x > width + self.diameter
-        or self.y < 0 - self.diameter
-        or self.y > height + self.diameter):
+        if (self.pos.x < 0 - self.diameter
+        or self.pos.x > width + self.diameter
+        or self.pos.y < 0 - self.diameter
+        or self.pos.y > height + self.diameter):
             SpriteManager.destroy(self)

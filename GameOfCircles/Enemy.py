@@ -1,9 +1,7 @@
-import SpriteManager # module, not class
-
 from Armored import Armored
-from Sprite import Sprite
-from Bullet import Bullet
 from Shooter import Shooter
+from Sprite import Sprite
+
 
 class Enemy(Armored, Shooter, Sprite):
     
@@ -12,6 +10,6 @@ class Enemy(Armored, Shooter, Sprite):
         
     def move(self):
         super(Enemy, self).move()
-        self.x += self.velocity.x
-        if self.x < 0 or self.x > width:
+        self.pos.add(self.velocity)
+        if self.pos.x < 0 or self.pos.x > width:
             self.velocity.x *= -1

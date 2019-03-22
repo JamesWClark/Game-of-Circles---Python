@@ -9,10 +9,10 @@ class Armored(Sprite):
         stroke(100)
         strokeWeight(self.armor)
         fill(255, 0, 0)
-        ellipse(self.x, self.y, self.diameter, self.diameter)
+        ellipse(self.pos.x, self.pos.y, self.diameter, self.diameter)
         fill(0)
         textAlign(CENTER, CENTER)
-        text(self.armor, self.x, self.y+10)
+        text(self.armor, self.pos.x, self.pos.y+10)
         noStroke()
         
     def handleCollision(self, other):

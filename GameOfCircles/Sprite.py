@@ -11,8 +11,7 @@ class Sprite(object):
     effects = []
     
     def __init__(self, x, y, team):
-        self.x = x
-        self.y = y
+        self.pos = PVector(x, y)
         self.team = team
         
     def __str__(self):
@@ -24,7 +23,7 @@ class Sprite(object):
     def display(self):
         noStroke()
         fill(self.c)
-        ellipse(self.x, self.y, self.diameter, self.diameter)
+        ellipse(self.pos.x, self.pos.y, self.diameter, self.diameter)
         
     def animate(self):
         for effect in self.effects:

@@ -43,7 +43,7 @@ def checkCollisions():
 def collision(a, b):
     r1 = a.diameter / 2.0
     r2 = b.diameter / 2.0
-    return r1 + r2 > math.sqrt(math.pow(a.x - b.x, 2) + math.pow(a.y - b.y, 2))
+    return r1 + r2 > math.sqrt(math.pow(a.pos.x - b.pos.x, 2) + math.pow(a.pos.y - b.pos.y, 2))
                 
 def bringOutYerDead():
     for sprite in destroyed:

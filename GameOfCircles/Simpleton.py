@@ -17,7 +17,7 @@ class Simpleton:
             vector.normalize()
             vector.x *= self.magnitude
             vector.y *= self.magnitude
-            SpriteManager.spawn(Bullet(self.handler.x, self.handler.y, vector, self.handler.team))
+            SpriteManager.spawn(Bullet(self.handler.pos.x, self.handler.pos.y, vector, self.handler.team))
             
         if millis() - self.mark > self.wait:
             self.mark = millis()
