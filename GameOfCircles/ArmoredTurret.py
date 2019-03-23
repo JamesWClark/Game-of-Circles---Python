@@ -2,20 +2,21 @@ import math
 import SpriteManager
 
 from Sprite import Sprite
-from Bullet import Bullet
+from RandomBezierVolley import RandomBezierVolley
 
 class ArmoredTurret(Sprite):
     
     travelSpeed = 2
     settled = False
     step = 1
-    maxSteps = 100
+    maxSteps = 40
     
     def __init__(self, startX, startY, stopX, stopY, team):
         self.pos = PVector(startX, startY)
         self.destination = PVector(stopX, stopY)
         self.wait = 50
         self.mark = millis()
+        self.primaryWeapon = RandomBezierVolley(self)
         
     def aim(self, target):
         vector = PVector(target.pos.x - self.pos.x, target.pos.y - self.pos.y)
@@ -29,16 +30,19 @@ class ArmoredTurret(Sprite):
     def move(self):
         if self.settled:
             if millis() - self.mark > self.wait:
-                self.step = 1 if self.step > 100 else self.step + 1
+                self.step = 1 if self.step > self.maxSteps else self.step + 1
                 self.mark = millis()
                 
-                aimVector = self.aim(SpriteManager.player)
                 if self.step == 1:
-                    SpriteManager.spawn(Bullet(self.pos.x, self.pos.y, aimVector, self.team))
+                    self.primaryWeapon.shoot(SpriteManager.player.pos)
                 elif self.step == 5:
-                    SpriteManager.spawn(Bullet(self.pos.x, self.pos.y, aimVector, self.team))
+                    self.primaryWeapon.shoot(SpriteManager.player.pos)
                 elif self.step == 10:
-                    SpriteManager.spawn(Bullet(self.pos.x, self.pos.y, aimVector, self.team))
+                    self.primaryWeapon.shoot(SpriteManager.player.pos)
+                elif self.step == 15:
+                    self.primaryWeapon.shoot(SpriteManager.player.pos)
+                elif self.step == 20:
+                    self.primaryWeapon.shoot(SpriteManager.player.pos)
                 
         else: # goto and stop
             xCom = self.destination.x - self.pos.x
