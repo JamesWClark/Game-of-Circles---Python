@@ -15,5 +15,5 @@ class Pea(Bullet):
        '''
         
     def handleCollision(self, other):
-        SpriteManager.spawn(GreenZone(self.x, self.y, self.team))
+        SpriteManager.spawn(GreenZone(self.pos.x, self.pos.y, self.team))
         SpriteManager.destroy(self)

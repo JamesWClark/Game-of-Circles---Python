@@ -1,14 +1,9 @@
 import SpriteManager
 from Pea import Pea
+from PrimaryWeapon import PrimaryWeapon
 
-class PeaShooter:
-    cooldown = True
+class PeaShooter(PrimaryWeapon):
     magnitude = 6
-    mark = 0
-    wait = 400
-
-    def __init__(self, handler):
-        self.handler = handler
         
     def shoot(self, vector):
         if self.cooldown:
@@ -17,7 +12,7 @@ class PeaShooter:
             vector.normalize()
             vector.x *= self.magnitude
             vector.y *= self.magnitude
-            SpriteManager.spawn(Pea(self.handler.x, self.handler.y, vector, self.handler.team))
+            SpriteManager.spawn(Pea(self.handler.pos.x, self.handler.pos.y, vector, self.handler.team))
             
         if millis() - self.mark > self.wait:
             self.mark = millis()

@@ -8,6 +8,7 @@ from Bullet import Bullet
 from Simpleton import Simpleton
 from PeaShooter import PeaShooter
 from SpreadShot import SpreadShot
+from RandomBezierVolley import RandomBezierVolley
 
 class Player(Armored, Sprite):
     hostile = False
@@ -15,6 +16,7 @@ class Player(Armored, Sprite):
     right = False
     up = False
     down = False
+    aimVector = PVector(0, -10)
     velocity = PVector(5,5)
     c = color(255,0,0)
     armory = Armory()
@@ -28,14 +30,12 @@ class Player(Armored, Sprite):
         self.armory.add(Simpleton(self))
         self.armory.add(SpreadShot(self))
         self.armory.add(PeaShooter(self))
+        self.armory.add(RandomBezierVolley(self))
         self.primaryWeapon = self.armory.equip("Simpleton")
         
-    def fire(self, vector = None):
+    def fire(self, vector):
         if self.hostile:
-            if vector is None:
-                self.primaryWeapon.shoot(PVector(0, -10))
-            else:
-                self.primaryWeapon.shoot(vector)    
+            self.primaryWeapon.shoot(vector)    
     
     def move(self):
         if self.left:
@@ -48,7 +48,7 @@ class Player(Armored, Sprite):
             self.pos.y += self.velocity.y
         self.pos.x = constrain(self.pos.x, self.diameter / 2, width - self.diameter / 2)
         self.pos.y = constrain(self.pos.y, self.diameter / 2, height - self.diameter / 2)
-        self.fire()
+        self.fire(self.aimVector)
         
     def aim(self):
         distance = dist(mouseX, mouseY, self.x, self.y)
@@ -59,11 +59,18 @@ class Player(Armored, Sprite):
         
     def keyDown(self):
         if key == '1':
+            self.aimVector = PVector(0, -10)
             self.primaryWeapon = self.armory.equip("Simpleton")
         if key == '2':
+            self.aimVector = PVector(0, -10)
             self.primaryWeapon = self.armory.equip("SpreadShot")
         if key == '3':
+            self.aimVector = PVector(0, -10)
             self.primaryWeapon = self.armory.equip("PeaShooter")
+        if key == '4':
+            self.aimVector = PVector(self.pos.x, self.pos.y - height)
+            self.primaryWeapon = self.armory.equip("RandomBezierVolley")
+        
         if key == 'f' or key == 'F':
             self.hostile = True
         if keyCode == LEFT:
