@@ -12,8 +12,8 @@ class ArmoredTurret(Sprite):
     maxSteps = 40
     
     def __init__(self, startX, startY, stopX, stopY, team):
-        self.pos = PVector(startX, startY)
-        self.destination = PVector(stopX, stopY)
+        self.pos = PVector(startX, startY) # current position
+        self.dest = PVector(stopX, stopY)  # target destination
         self.wait = 50
         self.mark = millis()
         self.primaryWeapon = RandomBezierVolley(self)
@@ -24,8 +24,21 @@ class ArmoredTurret(Sprite):
         return vector
     
     def display(self):
-        ellipse(self.destination.x, self.destination.y, 10, 10)
-        ellipse(self.pos.x, self.pos.y, 20, 20)
+        # turret
+        fill(self.c)
+        ellipse(self.pos.x, self.pos.y, self.diameter, self.diameter)
+
+        # landing pad
+        x = self.dest.x
+        y = self.dest.y
+        offset = self.diameter / 5
+        stroke(0)
+        strokeWeight(1)
+        line(x - offset, y, x + offset, y) # horizontal
+        line(x, y - offset, x, y + offset) # vertical 
+        noFill()
+        ellipse(x, y, offset, offset)
+        # noStroke()
         
     def move(self):
         if self.settled:
@@ -45,10 +58,10 @@ class ArmoredTurret(Sprite):
                     self.primaryWeapon.shoot(SpriteManager.player.pos)
                 
         else: # goto and stop
-            xCom = self.destination.x - self.pos.x
-            yCom = self.destination.y - self.pos.y
+            xCom = self.dest.x - self.pos.x
+            yCom = self.dest.y - self.pos.y
             travelVector = PVector(xCom, yCom).normalize().mult(self.travelSpeed)
-            distance = self.destination.dist(self.pos)
+            distance = self.dest.dist(self.pos)
      
             if distance > 1:
                 self.pos.x += travelVector.x

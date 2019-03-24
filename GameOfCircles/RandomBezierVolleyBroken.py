@@ -3,16 +3,12 @@ import SpriteManager
 from PrimaryWeapon import PrimaryWeapon
 from BezierBullet import BezierBullet
 
-class RandomBezierVolley(PrimaryWeapon):
+class RandomBezierVolleyBroken(PrimaryWeapon):
     wait = 120
         
     def shoot(self, vector):
-        x      = self.handler.pos.x
-        y      = self.handler.pos.y
-        team   = self.handler.team
         
-        bullet = BezierBullet(x, y, vector.x, vector.y, team)
-        SpriteManager.spawn(bullet)
+        SpriteManager.spawn(BezierBullet(self.handler.pos.x, self.handler.pos.y, vector.x, vector.y, self.handler.team))
         
         if self.cooldown:
             self.cooldown = False

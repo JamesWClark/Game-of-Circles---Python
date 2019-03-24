@@ -16,11 +16,16 @@ import SpriteManager
 
 def setup():
     print "Built with Processing Python version " + platform.python_version()
-    size(500, 500)
+    size(800, 600)
     textAlign(CENTER, CENTER)
 
     SpriteManager.setPlayer(Player(width / 2, height - 100, 1))
-    SpriteManager.spawn(ArmoredTurret(width + 100, -100, width-100, 100, 2))
+    
+    startX = random(-100, width + 100)
+    startY = random(-200, - 100)
+    stopX = random(100, width - 100)
+    stopY = random(100, height - 100)
+    SpriteManager.spawn(ArmoredTurret(startX, startY, stopX, stopY, 2))
     
         
 def draw():

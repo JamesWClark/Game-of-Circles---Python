@@ -2,7 +2,7 @@ import SpriteManager
 
 from Sprite import Sprite
 
-class BezierBullet(Sprite):
+class BezierBulletBroken(Sprite):
     damage = 34
     c = color(255)
     diameter = 20
@@ -10,6 +10,8 @@ class BezierBullet(Sprite):
     
     def __init__(self, x1, y1, x4, y4, team):
         Sprite.__init__(self, x1, y1, team)
+        # self.pos.x = bezierPoint(self.x1, self.x2, self.x3, self.x4, self.t);
+        # self.pos.y = bezierPoint(self.y1, self.y2, self.y3, self.y4, self.t);
         self.x1 = x1
         self.y1 = y1
         self.x2 = random(min(x1, x4), max(x1, x4))
@@ -18,6 +20,7 @@ class BezierBullet(Sprite):
         self.y3 = random(min(y1, y4), max(y1, y4))
         self.x4 = x4
         self.y4 = y4
+
 
     def move(self):
         self.t += 0.01
