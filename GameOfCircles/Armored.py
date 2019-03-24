@@ -8,7 +8,7 @@ class Armored(Sprite):
     def display(self):
         stroke(100)
         strokeWeight(self.armor)
-        fill(255, 0, 0)
+        fill(self.c)
         ellipse(self.pos.x, self.pos.y, self.diameter, self.diameter)
         fill(0)
         textAlign(CENTER, CENTER)

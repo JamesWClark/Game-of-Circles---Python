@@ -1,15 +1,17 @@
 import math
 import SpriteManager
 
+from Armored import Armored
 from Sprite import Sprite
 from RandomBezierVolley import RandomBezierVolley
 
-class ArmoredTurret(Sprite):
+class ArmoredTurret(Armored):
     
     travelSpeed = 2
     settled = False
     step = 1
     maxSteps = 40
+    c = color(155, 155, 0)
     
     def __init__(self, startX, startY, stopX, stopY, team):
         self.pos = PVector(startX, startY) # current position
@@ -24,9 +26,7 @@ class ArmoredTurret(Sprite):
         return vector
     
     def display(self):
-        # turret
-        fill(self.c)
-        ellipse(self.pos.x, self.pos.y, self.diameter, self.diameter)
+        Armored.display(self)
 
         # landing pad
         x = self.dest.x

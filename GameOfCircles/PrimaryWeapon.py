@@ -7,4 +7,12 @@ class PrimaryWeapon:
         self.handler = handler
     
     def shoot(self):
-        pass
+        if self.cooldown:
+            self.cooldown = False
+            self.mark = millis()
+
+        if millis() - self.mark > self.wait:
+            self.mark = millis()
+            self.cooldown = True
+            
+            
