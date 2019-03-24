@@ -1,6 +1,6 @@
 import math
 
-sprites = []
+active = []
 destroyed = []
 
 playerTeam = 1
@@ -19,7 +19,7 @@ def destroy(target):
     destroyed.append(target)
         
 def spawn(obj):
-    sprites.append(obj)
+    active.append(obj)
         
 def manage():
     updatePositions()
@@ -27,15 +27,15 @@ def manage():
     bringOutYerDead()
         
 def updatePositions():
-    for i in range(len(sprites)-1, -1, -1):
-        sprites[i].animate()
+    for i in range(len(active)-1, -1, -1):
+        active[i].animate()
 
 
 def checkCollisions():
-    for i in range(0, len(sprites)):
-        for j in range(i + 1, len(sprites)):
-            a = sprites[i]
-            b = sprites[j]
+    for i in range(0, len(active)):
+        for j in range(i + 1, len(active)):
+            a = active[i]
+            b = active[j]
             if a.team != b.team and collision(a, b):
                 a.handleCollision(b)
                 b.handleCollision(a)
@@ -47,6 +47,6 @@ def collision(a, b):
                 
 def bringOutYerDead():
     for sprite in destroyed:
-        if sprite in sprites: # figure out: removing this check causes like 90000 sprites to eventually add to destroyed list and multiple attempts to remove the same sprite crashes the program
-            sprites.remove(sprite)
+        if sprite in active: # figure out: removing this check causes like 90000 active to eventually add to destroyed list and multiple attempts to remove the same sprite crashes the program
+            active.remove(sprite)
         destroyed.remove(sprite)
