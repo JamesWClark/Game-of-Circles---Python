@@ -25,7 +25,12 @@ def setup():
     startY = random(-200, - 100)
     stopX = random(100, width - 100)
     stopY = random(100, height - 100)
+    startX2 = random(-100, width + 100)
+    startY2 = random(-200, - 100)
+    stopX2 = random(100, width - 100)
+    stopY2 = random(100, height - 100)
     SpriteManager.spawn(ArmoredTurret(startX, startY, stopX, stopY, 2))
+    SpriteManager.spawn(ArmoredTurret(startX2, startY2, stopX2, stopY2, 2))
     
         
 def draw():
