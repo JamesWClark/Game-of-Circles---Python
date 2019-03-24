@@ -8,10 +8,8 @@ class RandomBezierVolley(PrimaryWeapon):
         
     def shoot(self, vector):
         PrimaryWeapon.shoot(self)
-        
         x      = self.handler.pos.x
         y      = self.handler.pos.y
         team   = self.handler.team
-        
         bullet = BezierBullet(x, y, vector.x, vector.y, team)
         SpriteManager.spawn(bullet)
