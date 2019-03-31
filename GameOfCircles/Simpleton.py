@@ -3,7 +3,7 @@ from Bullet import Bullet
 from PrimaryWeapon import PrimaryWeapon
 
 class Simpleton(PrimaryWeapon):
-    wait = 120
+    wait = 250
     magnitude = 12
         
     def shoot(self, vector):

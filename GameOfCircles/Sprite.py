@@ -45,7 +45,7 @@ class Sprite(object):
     
     # todo: https://stackoverflow.com/a/5268474/1161948
     def handleCollision(self, other):
-        other.effect(self)
+        # other.effect(self)
         self.hp -= other.damage
         if self.hp < 1:
             SpriteManager.destroy(self)
