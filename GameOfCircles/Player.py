@@ -1,14 +1,11 @@
 import SpriteManager
 
-from Armory import Armory
 from Armored import Armored
+from Armory import Armory
 from Sprite import Sprite
 from Bullet import Bullet
 
 from Simpleton import Simpleton
-from PeaShooter import PeaShooter
-from SpreadShot import SpreadShot
-from RandomBezierVolley import RandomBezierVolley
 
 class Player(Armored, Sprite):
     hostile = False
@@ -22,15 +19,9 @@ class Player(Armored, Sprite):
     armory = Armory()
     damage = 15
     
-    def handleCollision(self, other):
-        pass
-    
     def __init__(self, x, y, team):
         Sprite.__init__(self, x, y, team)
         self.armory.add(Simpleton(self))
-        self.armory.add(SpreadShot(self))
-        self.armory.add(PeaShooter(self))
-        self.armory.add(RandomBezierVolley(self))
         self.primaryWeapon = self.armory.equip("Simpleton")
         
     def fire(self, vector):
@@ -61,15 +52,6 @@ class Player(Armored, Sprite):
         if key == '1':
             self.aimVector = PVector(0, -10)
             self.primaryWeapon = self.armory.equip("Simpleton")
-        if key == '2':
-            self.aimVector = PVector(0, -10)
-            self.primaryWeapon = self.armory.equip("SpreadShot")
-        if key == '3':
-            self.aimVector = PVector(0, -10)
-            self.primaryWeapon = self.armory.equip("PeaShooter")
-        if key == '4':
-            self.aimVector = PVector(self.pos.x, self.pos.y - height)
-            self.primaryWeapon = self.armory.equip("RandomBezierVolley")
         
         if key == 'f' or key == 'F':
             self.hostile = True
