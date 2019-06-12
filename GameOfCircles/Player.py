@@ -21,23 +21,48 @@ class Player(Armored, Sprite):
     c = color(255,0,0)
     armory = Armory()
     damage = 15
+    lives = 3
+    invincible = False
+    invincibleMark = 0
+    
+    def display(self):
+        fill(self.c)
+        ellipse(self.pos.x, self.pos.y, self.diameter, self.diameter)
+        image(self.img, self.pos.x, self.pos.y, 50, 50)
+        fill(100)
+        for i in range(0, self.lives):
+            ellipse(i * 20 + 20, height - 20, self.diameter, self.diameter)
     
     def handleCollision(self, other):
-        pass
+        if not self.invincible and self.lives > 0:
+            self.c = color(255, 255, 0, 127)
+            self.lives -= 1
+            self.invincible = True
+            self.invincibleMark = millis()
+            self.pos.x = width/2
+            self.pos.y = height - 100
     
     def __init__(self, x, y, team):
         Sprite.__init__(self, x, y, team)
+        self.img = loadImage("rockets.png")
+        
         self.armory.add(Simpleton(self))
         self.armory.add(SpreadShot(self))
         self.armory.add(PeaShooter(self))
         self.armory.add(RandomBezierVolley(self))
         self.primaryWeapon = self.armory.equip("Simpleton")
         
+        
     def fire(self, vector):
         if self.hostile:
             self.primaryWeapon.shoot(vector)    
     
     def move(self):
+            
+        if millis() - self.invincibleMark > 1500:
+            self.invincible = False
+            self.c = color(255, 0, 0)
+            
         if self.left:
             self.pos.x -= self.velocity.x
         if self.right:

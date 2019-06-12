@@ -43,7 +43,6 @@ class ArmoredTurret(Armored):
     def move(self):
         if self.settled:
             self.volley()
-                
         else: # goto and stop
             self.travel()
                 

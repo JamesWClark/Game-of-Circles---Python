@@ -34,6 +34,7 @@ def setup():
     
         
 def draw():
+    println(frameCount)
     background(204)    
     SpriteManager.manage()
     
